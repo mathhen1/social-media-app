@@ -49,9 +49,13 @@ const HomePage = () => {
                 <div className="flex flex-1 items-center justify-center flex-col w-full md:w-340">
 
                     {/* parte central, onde fica os posts */}
-                    <PostContent posts={posts} />
+                    {posts.map((post) => (
+                        <PostContent post={post} />
+                    ))}
 
                 </div>
+
+
 
             </div>
 
