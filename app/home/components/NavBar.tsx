@@ -1,30 +1,37 @@
 "use client"
 
-import { deleteCookie } from "@/app/lib/cookies"
+import { deleteCookie, getUser } from "@/app/lib/cookies"
 import { Search } from "lucide-react"
-import { redirect } from "next/navigation"
+import { redirect, useRouter } from "next/navigation"
 
 const NavBar = () => {
 
+    const router = useRouter()
+
     const handleProfile = () => {
-        console.log("parabens, macaco")
+        router.push("/home/profile" )
     }
 
     const handleExit = () => {
         deleteCookie().then(redirect("/"))
-        
+
+    }
+
+    const handleHome = () => {
+        router.push("/home")
     }
 
     return (
         <div className="flex
         md:flex-row md:gap-20 md:text-xl md:p-5 md:m-5
-         flex-col gap-5 m-1 p-1 text-base font-mono border">
+         flex-col gap-5 m-1 p-1 text-base font-mono">
 
             <button className="flex hover:border hover:p-1 hover:rounded-sm hover:p hover:scale-105 hover:bg-indigo-500 transition delay-150 duration-300 ease-in-out"
                 type="button"
                 onClick={handleProfile}>Perfil</button>
 
-            <button className="flex hover:border hover:p-1 hover:rounded-sm hover:p hover:scale-105 hover:bg-indigo-500 transition delay-100 duration-300 ease-in-out" type="button">
+            <button className="flex hover:border hover:p-1 hover:rounded-sm hover:p hover:scale-105 hover:bg-indigo-500 transition delay-100 duration-300 ease-in-out" type="button"
+            onClick={handleHome}>
                 Geral
             </button>
 
