@@ -13,13 +13,9 @@ const HomePage = () => {
 
     const [posts, setPosts] = useState<Post[]>([])
 
-    // useEffect(() => {
-    // }, [])
-
     const x = async () => {
         const y = await getPosts()
         setPosts(y)
-
     }
 
     if (posts.length === 0) {
@@ -35,14 +31,16 @@ const HomePage = () => {
     return (
 
         <div className="md:flex md:flex-col">
-            <div className="w-full flex justify-center border">
+
+            <div className="w-full flex justify-center">
                 {/*  aba superior */}
                 <NavBar />
             </div>
 
             <div className="md:flex md:flex-row gap-1 h-min-full">
-                <div className="flex items-center flex-none md:h-screen sticky top-0 pr-10 pl-10 border">
-                    {/*  aba lateral */}
+
+                <div className="flex items-center flex-none md:h-screen sticky top-0 pr-10 pl-10">
+                    {/*  aba lateral esquerda */}
                     <SideBar />
                 </div>
 
@@ -50,12 +48,15 @@ const HomePage = () => {
 
                     {/* parte central, onde fica os posts */}
                     {posts.map((post) => (
-                        <PostContent post={post} />
+                        <PostContent key={post.id} post={post} />
                     ))}
 
                 </div>
 
-
+                <div className="flex items-center flex-none md:h-screen sticky top-0 pr-10 pl-10">
+                    {/*  aba lateral direita */}
+                    <SideBar />
+                </div>
 
             </div>
 
