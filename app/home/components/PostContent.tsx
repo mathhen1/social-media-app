@@ -5,23 +5,6 @@ import { ThumbsUp, MessageSquareMore, SquareUserRound } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
-
-// let posts = [{
-//     id: "1",
-//     title: "jane",
-//     content: "cuuuuuuuuuu",
-//     published: true,
-//     authorid: "01"
-// }, {
-//     id: "2",
-//     title: "beth",
-//     content: "haha",
-//     published: true,
-//     authorid: "02"
-// }]
-
-
-
 interface PostProps {
     post: Post
 }
@@ -33,8 +16,7 @@ const PostContent = ({ post }: PostProps) => {
     const [optionsMenu, setOptionsMenu] = useState<string>("hidden")
 
     const handleLike = () => {
-        // console.log("calma ai chefia")
-        // console.log("oi", posts.length)
+        
     }
 
     const handlePostDetails = (id: string) => {
@@ -57,8 +39,6 @@ const PostContent = ({ post }: PostProps) => {
         return false
     }
 
-
-
     return (
 
         <div key={post.id} className="md:flex md:w-full md:m-3 md:p-3 md:flex-col md:justify-center
@@ -74,13 +54,19 @@ const PostContent = ({ post }: PostProps) => {
                 </div>
 
                 <div id="cardPost-Header-Options" className="flex flex-none gap-3 p-2">
+
                     <button onClick={() => handlePostDetails(post.id)}>Ver mais</button>
-                    <button onClick={handleOptions}>
-                        Opções
-                    </button>
-                    <div key={post.id} className={"flex flex-col " + optionsMenu}>
-                        <button>Editar</button>
-                        <button>Deletar</button>
+
+                    <div className="flex flex-col">
+                        <button onClick={handleOptions}>
+                            Opções
+                        </button>
+
+                        <div className="flex flex-col border">
+                            <button className={optionsMenu}>Editar</button>
+                            <button className={optionsMenu}>Deletar</button>
+                        </div>
+
                     </div>
 
                 </div>
